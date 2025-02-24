@@ -1,6 +1,4 @@
-﻿using FireDeptProject.Models;
-
-namespace FireDept.Models
+﻿namespace FireDeptProject.Models
 {
     public class Vehicles
     {
