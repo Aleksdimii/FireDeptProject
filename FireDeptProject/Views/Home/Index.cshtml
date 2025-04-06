@@ -1,8 +1,48 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Fire Emergency";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .hero-section {
+        background: linear-gradient(to right, #8B0000, #FF4500);
+        color: white;
+        padding: 100px 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        color: #f8f9fa;
+    }
+
+    .btn-report {
+        font-size: 1.2rem;
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        transition: background 0.3s ease;
+    }
+
+        .btn-report:hover {
+            background-color: #cc0000;
+        }
+</style>
+
+<div class="container text-center mt-5">
+    <div class="hero-section">
+        <h1 class="hero-title">Report a Fire Emergency</h1>
+        <p class="hero-subtitle">
+            If you see smoke or fire, report it immediately. Quick response saves lives.
+        </p>
+        <a class="btn btn-light btn-report" href="Cases">
+            Report Now
+        </a>
+    </div>
 </div>
