@@ -1,42 +1,34 @@
 ﻿@model FireDeptProject.Models.Vehicles
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Vehicle Details";
 }
 
-<h1>Details</h1>
+<div class="container py-5 text-white">
+    <div class="mb-4 text-center">
+        <h1 class="display-4 fw-bold text-danger">🚓 Vehicle Details</h1>
+        <p class="lead text-light">All relevant information about this vehicle deployment is shown below.</p>
+        <hr class="border-danger" style="width: 60px; margin: 1rem auto;" />
+    </div>
 
-<div>
-    <h4>Vehicles</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Unit)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Unit.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CaseStarted)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CaseStarted)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CaseResolved)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CaseResolved)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Case)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Case.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div class="bg-dark bg-opacity-75 p-5 rounded-4 shadow-lg border border-danger-subtle">
+        <dl class="row fs-5">
+            <dt class="col-sm-3 text-warning">Assigned Unit</dt>
+            <dd class="col-sm-9 text-white">@Html.DisplayFor(model => model.Unit.Id)</dd>
+
+            <dt class="col-sm-3 text-warning">Case Started</dt>
+            <dd class="col-sm-9 text-white">@Html.DisplayFor(model => model.CaseStarted)</dd>
+
+            <dt class="col-sm-3 text-warning">Case Resolved</dt>
+            <dd class="col-sm-9 text-white">@Html.DisplayFor(model => model.CaseResolved)</dd>
+
+            <dt class="col-sm-3 text-warning">Case ID</dt>
+            <dd class="col-sm-9 text-white">@Html.DisplayFor(model => model.Case.Id)</dd>
+        </dl>
+
+        <div class="text-center mt-4">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-warning btn-lg me-2">✏️ Edit</a>
+            <a asp-action="Index" class="btn btn-outline-light btn-lg">⬅ Back to List</a>
+        </div>
+    </div>
 </div>

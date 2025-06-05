@@ -1,49 +1,55 @@
 ﻿@model FireDeptProject.Models.Vehicles
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Vehicle";
 }
 
-<h1>Edit</h1>
+<div class="container py-5 text-white">
+    <div class="mb-4 text-center">
+        <h1 class="display-4 fw-bold text-danger">✏️ Edit Vehicle Deployment</h1>
+        <p class="lead text-light">Update assignment and case timing for this vehicle.</p>
+        <hr class="border-danger" style="width: 60px; margin: 1rem auto;" />
+    </div>
 
-<h4>Vehicles</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="bg-dark bg-opacity-75 p-5 rounded-4 shadow-lg border border-danger-subtle">
+        <form asp-action="Edit" class="row g-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="UnitId" class="control-label"></label>
-                <select asp-for="UnitId" class="form-control" asp-items="ViewBag.UnitId"></select>
+
+            <div class="col-md-6">
+                <label asp-for="UnitId" class="form-label text-warning">Assigned Unit</label>
+                <select asp-for="UnitId" class="form-select bg-black text-white border-danger" asp-items="ViewBag.UnitId"></select>
                 <span asp-validation-for="UnitId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CaseStarted" class="control-label"></label>
-                <input asp-for="CaseStarted" class="form-control" />
-                <span asp-validation-for="CaseStarted" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CaseResolved" class="control-label"></label>
-                <input asp-for="CaseResolved" class="form-control" />
-                <span asp-validation-for="CaseResolved" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CaseId" class="control-label"></label>
-                <select asp-for="CaseId" class="form-control" asp-items="ViewBag.CaseId"></select>
+
+            <div class="col-md-6">
+                <label asp-for="CaseId" class="form-label text-warning">Related Case</label>
+                <select asp-for="CaseId" class="form-select bg-black text-white border-danger" asp-items="ViewBag.CaseId"></select>
                 <span asp-validation-for="CaseId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="col-md-6">
+                <label asp-for="CaseStarted" class="form-label text-warning">Case Started</label>
+                <input asp-for="CaseStarted" type="datetime-local" class="form-control bg-black text-white border-warning" />
+                <span asp-validation-for="CaseStarted" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="CaseResolved" class="form-label text-warning">Case Resolved</label>
+                <input asp-for="CaseResolved" type="datetime-local" class="form-control bg-black text-white border-warning" />
+                <span asp-validation-for="CaseResolved" class="text-danger"></span>
+            </div>
+
+            <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-lg btn-danger px-5 shadow">💾 Save Changes</button>
+                <a asp-action="Index" class="btn btn-outline-light btn-lg ms-3">⬅ Back to Vehicles</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -1,36 +1,89 @@
 ﻿@model FireDeptProject.Models.Case
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Case Details";
 }
 
-<h1>Details</h1>
+<style>
+    .details-section {
+        background: linear-gradient(to right, #B22222, #FF6347);
+        color: white;
+        padding: 50px 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        margin-top: 50px;
+    }
 
-<div>
-    <h4>Case</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AmountOfUnitsNeeded)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AmountOfUnitsNeeded)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        .details-section h1,
+        .details-section h4 {
+            color: #fff;
+        }
+
+    .details-row dt,
+    .details-row dd {
+        font-size: 1.1rem;
+        color: #fff;
+    }
+
+    .details-row dt {
+        font-weight: bold;
+    }
+
+    .btn-action {
+        font-size: 0.95rem;
+        padding: 6px 14px;
+        margin-right: 8px;
+        border-radius: 20px;
+        border: none;
+        color: #B22222;
+        background-color: #fff;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+    }
+
+        .btn-action:hover {
+            background-color: #f8f9fa;
+        }
+
+    hr {
+        border-color: #fff;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 details-section">
+            <h1>Case Details</h1>
+            <h4>Fire Incident Overview</h4>
+            <hr />
+
+            <dl class="row details-row mt-4">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Type)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Type)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.AmountOfUnitsNeeded)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AmountOfUnitsNeeded)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+            </dl>
+
+            <div class="mt-4">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn-action">Edit</a>
+                <a asp-action="Index" class="btn-action">← Back to List</a>
+            </div>
+        </div>
+    </div>
 </div>

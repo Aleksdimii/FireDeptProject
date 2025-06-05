@@ -1,43 +1,97 @@
 ﻿@model FireDeptProject.Models.Case
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create a case";
 }
 
-<h1>Create</h1>
+<style>
+    .form-section {
+        background: linear-gradient(to right, #8B0000, #FF4500);
+        color: white;
+        padding: 50px 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        margin-top: 50px;
+    }
 
-<h4>Case</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AmountOfUnitsNeeded" class="control-label"></label>
-                <input asp-for="AmountOfUnitsNeeded" class="form-control" />
-                <span asp-validation-for="AmountOfUnitsNeeded" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        .form-section h1,
+        .form-section h4 {
+            color: #fff;
+        }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    .btn-submit {
+        font-size: 1.1rem;
+        padding: 0.6rem 1.8rem;
+        border-radius: 50px;
+        background-color: #fff;
+        color: #8B0000;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-submit:hover {
+            background-color: #f1f1f1;
+        }
+
+    .form-group label {
+        font-weight: 600;
+    }
+
+    .text-danger {
+        color: #ffd2d2 !important;
+    }
+
+    a.back-link {
+        color: #fff;
+        margin-top: 20px;
+        display: inline-block;
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 form-section">
+            <h1>Create Fire Case</h1>
+            <h4>Please fill out the form below</h4>
+            <hr />
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Type" class="control-label"></label>
+                    <input asp-for="Type" class="form-control" />
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="AmountOfUnitsNeeded" class="control-label"></label>
+                    <input asp-for="AmountOfUnitsNeeded" class="form-control" />
+                    <span asp-validation-for="AmountOfUnitsNeeded" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-submit" />
+                </div>
+            </form>
+
+            <a asp-action="Index" class="back-link">← Back to List</a>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
